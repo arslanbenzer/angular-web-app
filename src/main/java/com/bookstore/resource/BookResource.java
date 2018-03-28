@@ -99,6 +99,12 @@ public class BookResource {
 		return bookService.save(book);
 	}
 	
+	@RequestMapping(value="/remove", method=RequestMethod.POST)
+	public ResponseEntity remove(@RequestBody String id) {
+		bookService.removeOne(Long.parseLong(id));
+		return new ResponseEntity("Remove Sucess", HttpStatus.OK);
+	}
+	
 	@RequestMapping("/{id}")
 	public Book getBook(@PathVariable("id") Long id) {
 		Book book =bookService.findOne(id);
