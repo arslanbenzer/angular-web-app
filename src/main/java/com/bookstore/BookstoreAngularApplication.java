@@ -39,7 +39,6 @@ public class BookstoreAngularApplication implements CommandLineRunner {
 		userRoles.add( new UserRole(user1,role1));
 		
 		userService.createUser(user1,userRoles);
-		
 		userRoles.clear();
 		
 		User user2 = new User();
