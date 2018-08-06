@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 import com.bookstore.config.SecurityUtility;
 import com.bookstore.domain.User;
@@ -15,7 +17,7 @@ import com.bookstore.domain.security.UserRole;
 import com.bookstore.service.UserService;
 
 @SpringBootApplication
-public class BookstoreAngularApplication implements CommandLineRunner {
+public class BookstoreAngularApplication extends SpringBootServletInitializer implements CommandLineRunner  {
 
 	@Autowired
 	private UserService userService;
@@ -24,6 +26,11 @@ public class BookstoreAngularApplication implements CommandLineRunner {
 		SpringApplication.run(BookstoreAngularApplication.class, args);
 	}
 	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(BookstoreAngularApplication.class);
+	}
+
 	@Override
 	public void run(String... args) throws Exception {
 		User user1 = new User();
